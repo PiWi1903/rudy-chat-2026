@@ -3,11 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RUDY BALDWIN | Psychic Reader and Dream Translator</title>
-    <meta
-      name="description"
-      content="Chat tư vấn miễn phí mỗi ngày. Có người hướng dẫn – tỷ lệ cao – nhận số ngay."
-    />
+    <title>RUDY BALDWIN - Psychic Reader and Dream Translator</title>
 
     <link
       href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap"
@@ -15,54 +11,29 @@
     />
 
     <style>
-      .msg img {
-        max-width: 100%;
-        border-radius: 10px;
-        margin-top: 6px;
-      }
-
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         font-family: "Be Vietnam Pro", sans-serif;
       }
-
       body {
         background: #0f172a;
         color: #fff;
       }
-
       .container {
         max-width: 480px;
         margin: auto;
         padding: 16px;
       }
-
-      .hero {
-        text-align: center;
-        padding: 20px 0;
-      }
-
-      .hero h1 {
-        font-size: 22px;
-        margin-bottom: 6px;
-      }
-
-      .hero p {
-        font-size: 14px;
-        color: #94a3b8;
-      }
-
       .chat-box {
         background: #1e293b;
         border-radius: 16px;
         padding: 12px;
-        height: 80vh; /* 👈 QUAN TRỌNG */
+        height: 100vh;
         overflow-y: auto;
         margin-top: 16px;
       }
-
       .msg {
         margin-bottom: 10px;
         padding: 10px 12px;
@@ -71,162 +42,177 @@
         font-size: 14px;
         line-height: 1.4;
       }
-
       .bot {
         background: #334155;
       }
-
       .user {
         background: #22c55e;
         margin-left: auto;
         color: #000;
       }
-
-      .typing {
-        font-style: italic;
-        opacity: 0.7;
-      }
-
-      #dobBox {
-        display: none;
-        margin-top: 10px;
-      }
-
       select {
         width: 32%;
-        padding: 8px;
-        border-radius: 8px;
+        padding: 6px;
+        border-radius: 6px;
         border: none;
-        margin-right: 2%;
       }
-
       .btn {
-        display: block;
         width: 100%;
-        background: #22c55e;
-        color: #000;
-        padding: 14px;
+        background: linear-gradient(135deg, #d1180a, #f1716f);
+        color: #022c22;
+        padding: 10px;
         border-radius: 12px;
-        text-align: center;
-        font-weight: bold;
-        margin-top: 10px;
         border: none;
-        font-size: 15px;
-      }
-
-      .note {
-        font-size: 12px;
-        text-align: center;
-        color: #94a3b8;
+        font-weight: 700;
         margin-top: 6px;
+        box-shadow: 0 6px 14px rgba(34, 197, 94, 0.4);
+        cursor: pointer;
+        transition: all 0.2s ease;
       }
-
-      @keyframes pulse {
+      .btn:hover {
+        transform: scale(1.03);
+        box-shadow: 0 8px 18px rgba(34, 197, 94, 0.5);
+      }
+      .btn:active {
+        transform: scale(0.97);
+      }
+      @keyframes pulseBtn {
         0% {
           transform: scale(1);
         }
-
         50% {
           transform: scale(1.05);
         }
-
         100% {
           transform: scale(1);
         }
       }
-
-      #ctaBtn.show {
-        display: block;
-        animation: pulse 1s infinite;
+      .btn.pulse {
+        animation: pulseBtn 1.2s infinite;
       }
 
-      /* Header */
-      .chat-header {
+      .bot-row {
         display: flex;
-        align-items: center;
-        padding: 12px;
-        background: #1e293b;
-        border-bottom: 1px solid #334155;
+        gap: 8px;
+        align-items: flex-start;
       }
 
       .avatar {
-        width: 40px;
-        height: 40px;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: 2px solid #f59e0b; /* viền vàng nổi bật */
+        box-shadow: 0 0 6px rgba(245, 158, 11, 0.6);
+      }
+
+      .avatar {
+        animation: pulse 1.5s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 6px rgba(245, 158, 11, 0.6);
+        }
+        50% {
+          box-shadow: 0 0 12px rgba(245, 158, 11, 1);
+        }
+        100% {
+          box-shadow: 0 0 6px rgba(245, 158, 11, 0.6);
+        }
+      }
+
+      .bot-name {
+        background: rgba(245, 158, 11, 0.1);
+        padding: 2px 6px;
+        border-radius: 6px;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .bot-text {
+        font-size: 14px;
+      }
+
+      .online-dot {
+        width: 8px;
+        height: 8px;
         background: #22c55e;
         border-radius: 50%;
-        margin-right: 10px;
+        animation: blink 1.2s infinite;
       }
 
-      .avatar {
-        background: url("images/avatar.jpg") center/cover;
+      @keyframes blink {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.3;
+        }
+        100% {
+          opacity: 1;
+        }
       }
 
-      .info .name {
+      .next-btn {
+        width: 100%;
+        background: linear-gradient(135deg, #f59e0b, #f97316);
         color: #fff;
-        font-weight: 600;
-      }
-
-      .info .status {
-        font-size: 12px;
-        color: #22c55e;
+        padding: 12px;
+        border-radius: 14px;
+        border: none;
+        font-weight: 700;
+        font-size: 14px;
+        box-shadow: 0 6px 14px rgba(249, 115, 22, 0.4);
+        cursor: pointer;
+        animation: pulseBtn 1.2s infinite;
       }
     </style>
   </head>
 
   <body>
     <div class="container">
-      <!-- Header -->
-      <div class="chat-header">
-        <div class="avatar"></div>
-        <div class="info">
-          <div class="name">RUDY BALDWIN</div>
-          <div class="status">● Online</div>
-        </div>
-      </div>
-
       <div class="chat-box" id="chat"></div>
-
-      <!-- Nhập ngày sinh -->
-      <div id="dobBox">
-        <select id="day"></select>
-        <select id="month"></select>
-        <select id="year"></select>
-
-        <button onclick="submitDOB()" class="btn">Confirm</button>
-      </div>
-
-      <!-- CTA -->
-      <a
-        href="https://www.google.com/"
-        class="btn"
-        id="ctaBtn"
-        style="display: none"
-      >
-        👉 Wheel of fate
-      </a>
-      <div class="note">* Trúng Lớn – Đổi đời</div>
     </div>
 
     <script>
       const chat = document.getElementById("chat");
-      const dobBox = document.getElementById("dobBox");
 
-      // delay random
       function randomDelay(min, max) {
         return Math.floor(Math.random() * (max - min) + min);
       }
 
-      // hiển thị "đang nhập..."
+      // HÀM CHÈN ẢNH
+      function sendImage(src, callback) {
+        const div = document.createElement("div");
+        div.className = "msg bot";
+
+        const img = document.createElement("img");
+        img.src = src;
+        img.style.maxWidth = "100%";
+        img.style.borderRadius = "10px";
+        img.style.marginTop = "6px";
+
+        img.onload = () => {
+          chat.scrollTop = chat.scrollHeight;
+          setTimeout(() => {
+            if (callback) callback();
+          }, 500);
+        };
+
+        div.appendChild(img);
+        chat.appendChild(div);
+      }
+
       function showTyping() {
         const div = document.createElement("div");
-        div.className = "msg bot typing";
+        div.className = "msg bot";
         div.innerText = "Đang nhập...";
         chat.appendChild(div);
         chat.scrollTop = chat.scrollHeight;
         return div;
       }
 
-      // gõ từng chữ
       function typeMessage(text, type, callback) {
         const typingDiv = showTyping();
 
@@ -236,105 +222,72 @@
 
             const div = document.createElement("div");
             div.className = "msg " + type;
+            if (type === "bot") {
+              div.innerHTML = `
+    <div class="bot-row">
+      <img src="images/avatar.jpg" class="avatar">
+      <div>
+        <div class="bot-name">Rudy Baldwin <span class="online-dot"></span></div>
+        <div class="bot-text"></div>
+      </div>
+    </div>
+  `;
+            }
             chat.appendChild(div);
 
             let i = 0;
-
             function typing() {
               if (i < text.length) {
-                div.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(typing, 20 + Math.random() * 30);
+                // 👇 FIX xử lý <br>
+                if (text.substring(i, i + 4) === "<br>") {
+                  if (type === "bot") {
+                    div.querySelector(".bot-text").innerHTML += "<br>";
+                  } else {
+                    div.innerHTML += "<br>";
+                  }
+                  i += 4;
+                } else {
+                  if (type === "bot") {
+                    div.querySelector(".bot-text").innerHTML += text.charAt(i);
+                  } else {
+                    div.innerHTML += text.charAt(i);
+                  }
+                  i++;
+                }
+
+                setTimeout(typing, 40); //Tốc độ Chạy chữ
               } else {
                 chat.scrollTop = chat.scrollHeight;
                 if (callback) callback();
               }
             }
-
             typing();
           },
           randomDelay(800, 1500),
         );
       }
 
-      // Hàm Tính con Giáp
-      function getChineseZodiac(year) {
-        const animals = [
-          9, // Thân
-          10, // Dậu
-          11, // Tuất
-          12, // Hợi
-          1, // Tý
-          2, // Sửu
-          3, // Dần
-          4, // Mão
-          5, // Thìn
-          6, // Tỵ
-          7, // Ngọ
-          8, // Mùi
-        ];
-
-        return animals[year % 12];
-      }
-
-      const animalNameMap = {
-        1: "RAT",
-        2: "OX",
-        3: "Tiger",
-        4: "Rabbit",
-        5: "Dragon",
-        6: "Snake",
-        7: "Horse",
-        8: "Goat",
-        9: "Monkey",
-        10: "Rooster",
-        11: "Dog",
-        12: "Pig",
-      };
-
-      const zodiacMap = {
-        Aries: 1,
-        " Taurus": 2,
-        " Gemini": 3,
-        " Cancer": 4,
-        " Leo": 5,
-        " Virgo": 6,
-        " Libra": 7,
-        " Scorpio": 8,
-        " Sagittarius": 9,
-        " Capricorn": 10,
-        " Aquarius": 11,
-        " Pisces": 12,
-      };
-
-      // bắt đầu chat
-      function startChat() {
-        typeMessage(`Chào ${getPronoun()} ${userName} 👋`, "bot", () => {
-          typeMessage(
-            "Mình là Linh Do, hãy để mình giúp bạn thay đổi vận mệnh nhé",
-            "bot",
-            () => {
-              typeMessage(
-                "Bạn cho mình xin ngày sinh trước nha 🎯",
-                "bot",
-                () => {
-                  showDOB();
-                },
-              );
-            },
-          );
-        });
-      }
-
-      setTimeout(startChat, 800);
-
-      // hiện form
+      // ✅ CHỈ SỬA PHẦN HIỂN THỊ DOB (đưa vào chat)
       function showDOB() {
-        dobBox.style.display = "block";
+        const div = document.createElement("div");
+        div.className = "msg user";
+        div.id = "dobForm";
+
+        div.innerHTML = `
+          <div style="display:flex; gap:4px; margin-bottom:6px;">
+            <select id="day"></select>
+            <select id="month"></select>
+            <select id="year"></select>
+          </div>
+          <button onclick="submitDOB()" class="btn pulse">Xác nhận</button>
+        `;
+
+        chat.appendChild(div);
+        chat.scrollTop = chat.scrollHeight;
+
         initSelect();
       }
 
-      // tạo dropdown
       function initSelect() {
         const day = document.getElementById("day");
         const month = document.getElementById("month");
@@ -346,8 +299,23 @@
           day.innerHTML += `<option value="${i}">${i}</option>`;
         }
 
+        const months = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ];
+
         for (let i = 1; i <= 12; i++) {
-          month.innerHTML += `<option value="${i}">Tháng ${i}</option>`;
+          month.innerHTML += `<option value="${i}">${months[i - 1]}</option>`;
         }
 
         for (let i = 1950; i <= 2005; i++) {
@@ -355,204 +323,225 @@
         }
       }
 
-      // Hiện Button
-      function showCTA() {
-        const btn = document.getElementById("ctaBtn");
-        btn.style.display = "block";
-      }
-
-      // lấy param từ URL
-      function getParam(param) {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(param);
-      }
-
-      // dữ liệu từ trang trước
-      const userName = getParam("name") || "bạn";
-      const userGender = getParam("gender") || "other"; // male / female
-      const userZodiac = getParam("zodiac") || "";
-
-      // xưng hô
-      function getPronoun() {
-        if (userGender === "male") return "Anh";
-        if (userGender === "female") return "Chị";
-        return "Bạn";
-      }
-
-      // submit
       function submitDOB() {
         const d = parseInt(document.getElementById("day").value);
         const m = parseInt(document.getElementById("month").value);
         const y = parseInt(document.getElementById("year").value);
 
-        const zodiacAnimal = getChineseZodiac(y);
-        const animalName = animalNameMap[zodiacAnimal];
-        const animalImg = "images/image-" + zodiacAnimal + ".jpg";
-
         const userDiv = document.createElement("div");
         userDiv.className = "msg user";
-        userDiv.innerText = `Mình sinh ngày ${d}/${m}/${y}`;
+        userDiv.innerHTML = `
+  <div class="user-row">
+    <div class="user-bubble">
+      <div class="user-name">${userName}</div>
+      <div>Mình sinh ngày ${d}/${m}/${y}</div>
+    </div>
+  </div>
+`;
+
         chat.appendChild(userDiv);
+
+        // ✅ xoá đúng form DOB
+        const form = document.getElementById("dobForm");
+        if (form) form.remove();
 
         chat.scrollTop = chat.scrollHeight;
 
-        dobBox.style.display = "none";
-
-        //Function xử lý ảnh
-        function sendImage(src) {
-          const div = document.createElement("div");
-          div.className = "msg bot";
-
-          const img = document.createElement("img");
-          img.src = src;
-
-          div.appendChild(img);
-          chat.appendChild(div);
-
-          chat.scrollTop = chat.scrollHeight;
+        // Hàm CUNG HOÀNG ĐẠO
+        function getZodiac(d, m) {
+          if ((d >= 21 && m == 3) || (d <= 19 && m == 4)) return "Aries";
+          if ((d >= 20 && m == 4) || (d <= 20 && m == 5)) return "Taurus";
+          if ((d >= 21 && m == 5) || (d <= 20 && m == 6)) return "Gemini";
+          if ((d >= 21 && m == 6) || (d <= 22 && m == 7)) return "Cancer";
+          if ((d >= 23 && m == 7) || (d <= 22 && m == 8)) return "Leo";
+          if ((d >= 23 && m == 8) || (d <= 22 && m == 9)) return "Virgo";
+          if ((d >= 23 && m == 9) || (d <= 22 && m == 10)) return "Libra";
+          if ((d >= 23 && m == 10) || (d <= 21 && m == 11)) return "Scorpio";
+          if ((d >= 22 && m == 11) || (d <= 21 && m == 12))
+            return "Sagittarius";
+          if ((d >= 22 && m == 12) || (d <= 19 && m == 1)) return "Capricorn";
+          if ((d >= 20 && m == 1) || (d <= 18 && m == 2)) return "Aquarius";
+          return "Pisces";
         }
 
-        setTimeout(() => {
-          typeMessage("Ok để mình check cho bạn…", "bot", () => {
-            setTimeout(
-              () => {
-                typeMessage(
-                  `Hmm… ${getPronoun().toLowerCase()} ${userName} tuổi ${animalName} đúng không nhỉ 😏`,
-                  "bot",
-                  () => {
-                    const animalImg = "images/image-" + zodiacAnimal + ".jpg";
+        // HÀM CON GIÁP
+        function getChineseZodiac(year) {
+          const animals = [
+            "Monkey",
+            "Rooster",
+            "Dog",
+            "Pig",
+            "Rat",
+            "Ox",
+            "Tiger",
+            "Rabbit",
+            "Dragon",
+            "Snake",
+            "Horse",
+            "Goat",
+          ];
+          return animals[year % 12];
+        }
 
-                    // 👉 Bước 1: hiện ảnh
-                    setTimeout(() => {
-                      sendImage(animalImg);
-
-                      // 👉 Bước 2: nói theo con giáp
-                      setTimeout(() => {
-                        typeMessage(
-                          animalMessageMap[zodiacAnimal],
-                          "bot",
-                          () => {
-                            // 👉 Bước 3: mới tới câu này
-                            typeMessage(
-                              "Hôm nay vận bạn khá ổn đấy 🔥",
-                              "bot",
-                              () => {
-                                const zodiac = getZodiac(d, m);
-
-                                typeMessage(
-                                  `Bạn thuộc cung ${zodiac}`,
-                                  "bot",
-                                  () => {
-                                    const zodiacImg =
-                                      "images/image-zodiac-" +
-                                      zodiacMap[zodiac] +
-                                      ".png";
-
-                                    setTimeout(() => {
-                                      sendImage(zodiacImg);
-                                    }, 500);
-
-                                    typeMessage(
-                                      getZodiacMessage(zodiac),
-                                      "bot",
-                                      () => {
-                                        typeMessage(
-                                          `Mình chốt riêng cho ${getPronoun().toLowerCase()} ${userName} 2 số này 👇`,
-                                          "bot",
-                                          () => {
-                                            typeMessage(
-                                              randomNumber(),
-                                              "bot",
-                                              () => {
-                                                setTimeout(showCTA, 800);
-                                              },
-                                            );
-                                          },
-                                        );
-                                      },
-                                    );
-                                  },
-                                );
-                              },
-                            );
-                          },
-                        );
-                      }, 600);
-                    }, 500);
-                  },
-                );
-              },
-              randomDelay(1000, 2000),
-            );
-          });
-        }, 500);
-      }
-
-      // cung hoàng đạo
-      function getZodiac(d, m) {
-        if ((d >= 21 && m == 3) || (d <= 19 && m == 4)) return " Aries";
-        if ((d >= 20 && m == 4) || (d <= 20 && m == 5)) return " Taurus";
-        if ((d >= 21 && m == 5) || (d <= 20 && m == 6)) return " Gemini";
-        if ((d >= 21 && m == 6) || (d <= 22 && m == 7)) return " Cancer";
-        if ((d >= 23 && m == 7) || (d <= 22 && m == 8)) return " Leo";
-        if ((d >= 23 && m == 8) || (d <= 22 && m == 9)) return " Virgo";
-        if ((d >= 23 && m == 9) || (d <= 22 && m == 10)) return " Libra";
-        if ((d >= 23 && m == 10) || (d <= 21 && m == 11)) return " Scorpio";
-        if ((d >= 22 && m == 11) || (d <= 21 && m == 12)) return " Sagittarius";
-        if ((d >= 22 && m == 12) || (d <= 19 && m == 1)) return " Capricorn";
-        if ((d >= 20 && m == 1) || (d <= 18 && m == 2)) return " Aquarius";
-        return " Pisces";
-      }
-
-      // nội dung theo cung
-      function getZodiacMessage(z) {
-        const data = {
-          " Aries": "Hôm nay có cửa ăn khá cao 🔥",
-          " Taurus": "Có lộc nhỏ nhưng đều 💰",
-          " Gemini": "Dễ trúng bất ngờ",
-          " Cancer": "Vận đang lên mạnh",
-          " Leo": "Khả năng ăn lớn",
-          " Virgo": "Ngày đẹp để vào tiền",
-          " Libra": "Có người kéo lộc",
-          " Scorpio": "Dễ nổ to",
-          " Sagittarius": "Tỷ lệ khá ngon",
-          " Capricorn": "Cửa sáng rõ",
-          " Aquarius": "Có tín hiệu tốt",
-          " Pisces": "Vận may đang tới",
+        // Gán Ảnh vào Cung hoàng đạo
+        const zodiacImageMap = {
+          Aries: "images/zodiac-1.jpg",
+          Taurus: "images/zodiac-2.jpg",
+          Gemini: "images/zodiac-3.jpg",
+          Cancer: "images/zodiac-4.jpg",
+          Leo: "images/zodiac-5.jpg",
+          Virgo: "images/zodiac-6.jpg",
+          Libra: "images/zodiac-7.jpg",
+          Scorpio: "images/zodiac-8.jpg",
+          Sagittarius: "images/zodiac-9.jpg",
+          Capricorn: "images/zodiac-10.jpg",
+          Aquarius: "images/zodiac-11.jpg",
+          Pisces: "images/zodiac-12.jpg",
         };
-        return data[z];
-      }
 
-      // Nội dung theo ocn Giáp
-      const animalMessageMap = {
-        1: "Tuổi Tý hôm nay có dấu hiệu tài lộc bất ngờ đó 👀",
-        2: "Tuổi Sửu hôm nay khá ổn định, dễ ăn chắc 💰",
-        3: "Tuổi Dần có cơ hội trúng lớn nếu vào đúng lúc 🔥",
-        4: "Tuổi Mão hôm nay vận may khá nhẹ nhưng đều 📈",
-        5: "Tuổi Thìn hôm nay rất sáng, dễ có lộc to 🐉",
-        6: "Tuổi Tỵ có dấu hiệu bùng nổ bất ngờ ⚡",
-        7: "Tuổi Ngọ hôm nay dễ ăn nhanh thắng nhanh 🏇",
-        8: "Tuổi Mùi có quý nhân hỗ trợ 🍀",
-        9: "Tuổi Thân hôm nay có cơ hội lật kèo 😏",
-        10: "Tuổi Dậu tài lộc khá rõ ràng hôm nay 🐔",
-        11: "Tuổi Tuất có dấu hiệu ăn chắc mặc bền 🐶",
-        12: "Tuổi Hợi hôm nay cực kỳ có lộc 💎",
-      };
+        const animalImageMap = {
+          Rat: "images/animal-1.jpg",
+          Ox: "images/animal-2.jpg",
+          Tiger: "images/animal-3.jpg",
+          Rabbit: "images/animal-4.jpg",
+          Dragon: "images/animal-5.jpg",
+          Snake: "images/animal-6.jpg",
+          Horse: "images/animal-7.jpg",
+          Goat: "images/animal-8.jpg",
+          Monkey: "images/animal-9.jpg",
+          Rooster: "images/animal-10.jpg",
+          Dog: "images/animal-11.jpg",
+          Pig: "images/animal-12.jpg",
+        };
 
-      chat.scrollTo({
-        top: chat.scrollHeight,
-        behavior: "smooth",
-      });
-      // random số
-      function format(n) {
-        return n.toString().padStart(2, "0");
+        // Gán Nội dung theo Cung hoàng đạo
+        const zodiacContentMap = {
+          Aries: "You are bold, energetic and love challenges 🔥",
+          Taurus: "You are stable, patient and value security 💰",
+          Gemini: "You are smart, flexible and love communication 💬",
+          Cancer: "You are emotional, caring and intuitive 💖",
+          Leo: "You are confident, charismatic and love attention 👑",
+          Virgo: "You are practical, detail-oriented and analytical 🧠",
+          Libra: "You seek balance, harmony and beauty ⚖️",
+          Scorpio: "You are intense, mysterious and powerful 🦂",
+          Sagittarius: "You love freedom, adventure and exploration 🌍",
+          Capricorn: "You are disciplined, ambitious and determined 🏔️",
+          Aquarius: "You are creative, unique and forward-thinking ⚡",
+          Pisces: "You are dreamy, sensitive and artistic 🎨",
+        };
+        const animalContentMap = {
+          Rat: "Quick-witted, smart and resourceful 🐭",
+          Ox: "Strong, reliable and hardworking 🐂",
+          Tiger: "Brave, confident and competitive 🐅",
+          Rabbit: "Gentle, elegant and kind 🐇",
+          Dragon: "Powerful, lucky and full of energy 🐉",
+          Snake: "Wise, calm and mysterious 🐍",
+          Horse: "Energetic, free-spirited and active 🐎",
+          Goat: "Calm, creative and gentle 🐐",
+          Monkey: "Smart, curious and playful 🐒",
+          Rooster: "Confident, honest and observant 🐓",
+          Dog: "Loyal, honest and protective 🐕",
+          Pig: "Generous, kind and easy-going 🐖",
+        };
+        // ⚠️ GIỮ NGUYÊN FLOW
+        const zodiac = getZodiac(d, m);
+        const animal = getChineseZodiac(y);
+
+        typeMessage("Ok để mình check cho bạn...", "bot", () => {
+          setTimeout(
+            () => {
+              typeMessage(`Your zodiac sign is ${zodiac}`, "bot", () => {
+                sendImage(zodiacImageMap[zodiac], () => {
+                  typeMessage(zodiacContentMap[zodiac], "bot", () => {
+                    typeMessage(`Chinese zodiac: ${animal}`, "bot", () => {
+                      sendImage(animalImageMap[animal], () => {
+                        typeMessage(animalContentMap[animal], "bot", () => {
+                          typeMessage(
+                            "Mình chốt cho bạn 2 số 👇",
+                            "bot",
+                            () => {
+                              typeMessage(randomNumber(), "bot", () => {
+                                setTimeout(() => {
+                                  showNextButton();
+                                }, 800);
+                              });
+                            },
+                          );
+                        });
+                      });
+                    });
+                  });
+                });
+              });
+            },
+            randomDelay(1000, 2000),
+          );
+        });
       }
 
       function randomNumber() {
-        const a = Math.floor(Math.random() * 43);
-        const b = Math.floor(Math.random() * 43);
-        return `👉 ${format(a)} - ${format(b)}`;
+        let a = Math.floor(Math.random() * 43); // 0–42
+        let b;
+
+        do {
+          b = Math.floor(Math.random() * 43);
+        } while (b === a); // đảm bảo khác nhau
+
+        return `👉 ${a.toString().padStart(2, "0")} - ${b.toString().padStart(2, "0")}`;
       }
+
+      const userName =
+        new URLSearchParams(window.location.search).get("name") || "bạn";
+      const userGender =
+        new URLSearchParams(window.location.search).get("gender") || "other";
+
+      function getPronoun() {
+        if (userGender === "male") return "Mr";
+        if (userGender === "female") return "Mrs";
+        return "You";
+      }
+
+      function showNextButton() {
+        const div = document.createElement("div");
+        div.className = "msg user";
+
+        div.innerHTML = `
+    <button class="next-btn" onclick="goNext()">
+      Xem kết quả chi tiết 👉
+    </button>
+  `;
+
+        chat.appendChild(div);
+        chat.scrollTop = chat.scrollHeight;
+      }
+
+      function goNext() {
+        window.location.href = "https://www.google.com"; // 👈 đổi link theo bạn
+      }
+
+      function startChat() {
+        typeMessage(
+          `Hello ${getPronoun()} ${userName} 👋 <br> Ako si Rudy Baldwin. Isang Physic reader at Astrologo.`,
+          "bot",
+          () => {
+            typeMessage(
+              "Ngayong Mayo, 3 zodiac signs ang makakaranas ng life-changing luck, at 2 zodiac signs ang makakaharap sa kamalasan. <br> Alin ang magiging...? 🤖",
+              "bot",
+              () => {
+                typeMessage(
+                  "Hayaan mong basahin ko ang iyong horoscope. 🎯 <br> Una, mangyaring sabihin sa akin ang iyong petsa ng kapanganakan.",
+                  "bot",
+                  () => {
+                    showDOB();
+                  },
+                );
+              },
+            );
+          },
+        );
+      }
+
+      setTimeout(startChat, 800);
     </script>
   </body>
 </html>
